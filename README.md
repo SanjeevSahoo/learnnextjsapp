@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## NEXTJS SPECIAL FILES
 
-## Getting Started
+These special files have a special purpose in next js. they override any such similar files declared in parent segment. If we dont declare any such files in nested segment below this segment then this is used for all the segments below.
 
-First, run the development server:
+    page.js - each route segment should have this file only then that segment will work as the route.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+    layout.js - this would be the common layout which doesnot rerender when sibling route are loaded
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    loading.js - this is a custom loading ui that can be used when some component is being loaded
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+    not-found.js - we can customize the not found page, nextjs shows a default page
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    error.js - creates an error boundary for that segment and shows a fallback UI
 
-## Learn More
+    template.js - rerendering layout similar to layout.js
 
-To learn more about Next.js, take a look at the following resources:
+We can create components that can colocate with these files but they wont be a route, only the folder with a page.js/page.tsx file is considered as route.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## LAYOUTS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Top level layout is called Root Layout, they must contain html tag. if we donot create a root layout, nextjs automatically creates a Root Layout during build time.
