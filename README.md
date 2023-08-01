@@ -72,3 +72,15 @@ this can be used to control what happens if user visits a segment that is not dy
 ## STREAMING WITH SUSPENSE
 
 we can wrap component inside <Suspense> that performs some asyncronous data fetching.
+
+## ERROR HANDLING
+
+error.js file can be used to create error boundaries, there can be nested error boundaries. error boundary becomes the child of layout component in same segment.
+
+for layout errors create error.js in parent folder of layout.js.
+
+for root layout global-error.js is used.
+
+error.js should be a client component.
+
+if an error occurs in the server components then the error is thrown to the nearest error.js
