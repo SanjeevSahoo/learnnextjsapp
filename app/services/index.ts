@@ -16,4 +16,12 @@ async function getUserById(userId: string) {
   return res.json();
 }
 
-export { getAllUsers, getUserById };
+async function getPostsByUserId(userId: string) {
+  const res = await fetch(`${API_BASE_URL}posts/${userId}`);
+
+  if (!res.ok) throw new Error("failed to fetch user all post data");
+
+  return res.json();
+}
+
+export { getAllUsers, getUserById, getPostsByUserId };

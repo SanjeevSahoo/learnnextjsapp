@@ -8,7 +8,9 @@ async function UsersListPage() {
   if (users && users.length > 0) {
     return users.map((item: IUser) => (
       <div key={item.id}>
-        <Link href={`/users/${item.id.toString()}`}>{item.dispname}</Link>
+        <Link href={`/suspensedemo/${item.id.toString()}`}>
+          {item.dispname}
+        </Link>
       </div>
     ));
   }
