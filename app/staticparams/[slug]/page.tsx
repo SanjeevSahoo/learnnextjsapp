@@ -3,11 +3,14 @@ export default function Page({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-  const users = await fetch("https://jsonplaceholder.typicode.com/users").then(
-    (res) => res.json()
-  );
+  const userData = await fetch("http://localhost:3000/api/users")
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err);
+      return [];
+    });
 
-  return users.map((user: any) => ({
+  return userData.users.map((user: any) => ({
     slug: user.username.toString().toLowerCase(),
   }));
 }
