@@ -84,3 +84,27 @@ for root layout global-error.js is used.
 error.js should be a client component.
 
 if an error occurs in the server components then the error is thrown to the nearest error.js
+
+## DATA CATCHING
+
+IN memory cache and persistant cache.
+
+In memory/request memorization lasts till the current request cycle.
+
+persistent cache lasts accross requests.
+
+persistent cache lasts till the revalidation time or if its opted out.
+
+Revalidation can be time based or on demand.
+
+To set revalidate time per fetch request
+
+    fetch('https://...', { next: { revalidate: 3600 } })
+
+Opt out of caching for an individual `fetch` request
+
+    fetch(`https://...`, { cache: 'no-store' })
+
+Opt out of caching for all data requests in the route segment
+
+    export const dynamic = 'force-dynamic'
